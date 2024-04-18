@@ -1,0 +1,26 @@
+<div class="row m-3">
+    <div class="col-12">
+        <div class="table table-bordered">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Category Name</th>
+                        <th>Action</th>
+                    </tr>
+                   
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cate of category$ | async; let i = index" > 
+                        <td>
+                            {{i+1}}
+                        </td>
+                        <td>{{cate.categoryName}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

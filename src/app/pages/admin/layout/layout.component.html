@@ -1,0 +1,42 @@
+
+ <div class="navbar_section">
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+      <div class="container-fluid w-100">
+        <a class="navbar-brand branding logo" href="#">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/products" >Product</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/category">Category</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">projects</a>
+            </li>
+            
+            
+          </ul>
+ 
+          <div class="nav-right">
+            <form class="d-flex align-items-center" >
+         <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+         <button type='submit'><a href="#"><i class="fas fa-search"></i></a></button>
+              <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="far fa-heart"></i></a>
+       </form>
+            
+          </div>
+ 
+        </div>
+      </div>
+    </nav>
+
+  </div>
+  <div class="container-layout">    <router-outlet></router-outlet></div>

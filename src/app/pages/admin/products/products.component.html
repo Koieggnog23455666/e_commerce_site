@@ -1,0 +1,95 @@
+<div class="row my-5 mx-3">
+    <div [ngClass]="isSidePanelVisible?'col-8':'col-12'">
+        <div class="card">
+            <div class=".card-header bg-primary ">
+                <div class="row p-2 align-text-center">
+                    <div class="col-6">Product List</div>
+                    <div class="col-6 text-end mt-1"><button (click)="isNewSidePanel()"
+                            class="btn btn-sm btn-success ">New</button></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3 mx-2 my-2" *ngFor="let product of productList">
+                        <div class="card ">
+                            <div class="col-12"><img class="card-img-top  " [src]="product.productImageUrl"
+                                    alt="Card image"></div>
+
+                            <div class="card-body">
+                                <h4 class="card-title">{{product.productName}} </h4>
+                                <p class="card-text">{{product.categoryName}} </p>
+                                <a class="btn btn-primary mx-3" (click)="onEdit(product)">Edit</a>
+                                <a class="btn btn-danger" (click)="onDelete(product)">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-4" *ngIf="isSidePanelVisible">
+        <div class="card">
+            <div class=".card-header bg-primary">
+                <div class="row p-2 ">
+                    <div class="col-6">Product List</div>
+                    <div class="col-6 text-end mt-1"><button (click)="isCloseSidePanel()"
+                            class="btn btn-sm btn-success ">Close</button></div>
+                </div>
+            </div>
+            <form [formGroup]="productForm">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="sku">SKU</label>
+                        <input type="text" id="sku" formControlName="sku" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" formControlName="name" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="shortName">Short Name</label>
+                        <input type="text" id="shortName" formControlName="shortName" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" formControlName="price" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="categoryId">Category</label>
+                        <select id="categoryId" formControlName="categoryId" class="form-select">
+                            <option *ngFor="let cate of categoryList" [value]="cate.categoryId">{{ cate.categoryName }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="deliveryTimeSpan">Delivery Time Span</label>
+                        <input type="text" id="deliveryTimeSpan" formControlName="deliveryTimeSpan"
+                            class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="imageURL">Image URL</label>
+                        <input type="text" id="imageURL" formControlName="imageURL" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" formControlName="description" class="form-control">
+                    </div>
+                    <div class="row pt-2">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-success" (click)="reset()">Reset</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="submit" *ngIf="mode === 'Add'" (click)="onSave()" class="btn btn-success">Add
+                                Product</button>
+                            <button type="submit" *ngIf="mode === 'Update'" (click)="updateProduct()"
+                                class="btn btn-primary">Update Product</button>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
