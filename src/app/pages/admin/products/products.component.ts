@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../../service/product/product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { category, product } from '../../../interface';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogPopUpComponent } from './dialog-pop-up/dialog-pop-up.component';
 
 
 @Component({
@@ -10,37 +13,24 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
   isSidePanelVisible: boolean = false;
-  categoryList: any[] = [];
+  categoryList: category[] = [];
   mode: string = "Add";//add or edit mode
-  productList: any[] = [];
+  productList: product[] = [];
+  name:string='krishna'
+  productObj: product[]=[]
 
-  productObj: any = {
-    "productId": 0,
-    "productSku": "",
-    "productName": "",
-    "productPrice": 0,
-    "productShortName": "",
-    "productDescription": "",
-    "createdDate": new Date(),
-    "deliveryTimeSpan": "",
-    "categoryId": 0,
-    "productImageUrl": "",
-  }
-
-  productForm = new FormGroup({
-    sku: new FormControl('', [Validators.required]),
-    name: new FormControl('', [Validators.required]),
-    shortName: new FormControl('', [Validators.required]),
-    price: new FormControl('', [Validators.required]),
-    categoryId: new FormControl('', [Validators.required]),
-    deliveryTimeSpan: new FormControl('', [Validators.required]),
-    imageURL: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
-  });
-  constructor(private productSrv: ProductService) { }
+  
+  constructor(private productSrv: ProductService,private dialogRef:MatDialog) { }
   ngOnInit(): void {
     this.getAllCategory()
     this.getAllProduct()
+  }
+  
+  openDialog(){
+
+    this.dialogRef.open(DialogPopUpComponent,{
+      data:this.name
+    })
   }
   getAllCategory() {
     this.productSrv.getCategory().subscribe((res: any) => {
@@ -55,30 +45,7 @@ export class ProductsComponent implements OnInit {
       this.productList = res.data
     })
   }
-  onSave() {
-    const createProduct = {
-      productSku: this.productForm.get('sku')?.value,
-      productName: this.productForm.get('name')?.value,
-      productPrice: this.productForm.get('price')?.value,
-      productShortName: this.productForm.get('shortName')?.value,
-      productDescription: this.productForm.get('description')?.value,
-      deliveryTimeSpan: this.productForm.get('deliveryTimeSpan')?.value,
-      categoryId: this.productForm.get('categoryId')?.value,
-      productImageUrl: this.productForm.get('imageURL')?.value
-    };
-    this.productSrv.saveProduct(createProduct).subscribe((res: any) => {
-      if (res.result) {
-        alert('Product Created')
-        this.getAllProduct()
-        this.productForm.reset()
-        this.productForm.get('categoryId')?.reset()
-        this.productForm.get('deliveryTimeSpan')?.reset()
-      }
-      else {
-        alert(res.message);
-      }
-    })
-  }
+ 
   onDelete(item: any) {
     const isDelete = confirm("Are you sure to delete this item");
     if (isDelete) {
@@ -100,45 +67,24 @@ export class ProductsComponent implements OnInit {
   isCloseSidePanel() {
     this.isSidePanelVisible = false
   }
-  onEdit(item: any) {
-    this.productObj = item;
+  onEdit(product:product) {
+    
     this.isSidePanelVisible = true;
-    this.productForm.get('sku')?.setValue(this.productObj.productSku)
-    this.productForm.get('name')?.setValue(this.productObj.productName)
-    this.productForm.get('shortName')?.setValue(this.productObj.productShortName)
-    this.productForm.get('price')?.setValue(this.productObj.productPrice)
-    this.productForm.get('categoryId')?.setValue(this.productObj.categoryId)
-    this.productForm.get('deliveryTimeSpan')?.setValue(this.productObj.deliveryTimeSpan)
-    this.productForm.get('imageURL')?.setValue(this.productObj.productImageUrl)
-    this.productForm.get('description')?.setValue(this.productObj.productDescription)
+    // this.productForm.get('productId')?.setValue(product.productId)
+    // this.productForm.get('sku')?.setValue(product.productSku)
+    // this.productForm.get('name')?.setValue(product.productName)
+    // this.productForm.get('shortName')?.setValue(product.productShortName)
+    // this.productForm.get('price')?.setValue(product.productPrice)
+    // this.productForm.get('description')?.setValue(product.productDescription)
+    // this.productForm.get('categoryId')?.setValue(product.categoryId)
+    // this.productForm.get('deliveryTimeSpan')?.setValue(product.deliveryTimeSpan)
+    // this.productForm.get('imageURL')?.setValue(product.productImageUrl)
     this.mode="Update";
+    console.log(product)
   }
-  updateProduct() {
-    const updatedProduct = {
-      productId: this.productObj.productId,
-      productSku: this.productForm.get('sku')?.value,
-      productName: this.productForm.get('name')?.value,
-      productPrice: this.productForm.get('price')?.value,
-      productShortName: this.productForm.get('shortName')?.value,
-      productDescription: this.productForm.get('description')?.value,
-      deliveryTimeSpan: this.productForm.get('deliveryTimeSpan')?.value,
-      categoryId: this.productForm.get('categoryId')?.value,
-      productImageUrl: this.productForm.get('imageURL')?.value
-    };
-    this.productSrv.updateProduct(updatedProduct).subscribe((res: any) => {
-      if (res.result) {
-        alert('Product Updated')
-        this.getAllProduct()
-        this.productForm.reset()
-
-      }
-      else {
-        alert(res.message);
-      }
-    })
-  }
-  reset(){
-    this.productForm.reset()
-    this.mode="Add"
-  }
+  
+  // reset(){
+  //   this.productForm.reset()
+  //   this.mode="Add"
+  // }
 }

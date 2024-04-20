@@ -1,0 +1,103 @@
+
+.product-container{
+    margin-top: 8vh;
+}
+.container-fluid{
+  padding-right: 0 !important;
+}
+nav{
+  width: 30vh;
+}
+.card-text{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.vas{
+  padding-right: 0 !important;
+}
+.top{
+    width: 20%;
+    height: 100%;
+    padding-left: 0;
+    transition: transform  .3s ease-in-out;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+.card-title{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  
+  width: 100%;
+}
+.top:hover{
+    transform: scale(.95);
+}
+.row{
+    overflow-y: hidden;
+}
+/* Initial box shadow */
+.top2 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Change box shadow on hover */
+.top2:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.card-img-top{
+    height: 13vw;
+    width: 100%;
+    object-fit:cover;
+} 
+
+.second{
+    display: flex ;
+}
+.middle{
+    height: 13vw;
+    object-fit: cover;
+    overflow: hidden;
+}
+.middle:hover img{
+    transform: scale(1.1);
+}
+.middle img {
+    transition: transform 0.3s; /* Add smooth transition effect */
+  }
+  @media only screen and (max-width: 500px) {
+    
+    .top{
+      width: 50%;
+    }
+    .middle{
+      height: 100% !important;
+    }
+    .card-img-top{
+      height: 30vw;
+    }
+     
+  }
+  @media screen and (min-width:499px) and (max-width:960px) {
+      .top{
+          width: 50%;
+        }
+        .middle{
+          height: 100% !important;
+        }
+        .card-img-top{
+          height: 30vw;
+        }
+  }
+  @media screen and (min-width:960px) {
+    .top{
+      width: 20%;
+    }
+   
+
+  }

@@ -1,0 +1,67 @@
+<form [formGroup]="productForm">
+    <div class="row px-2">
+        <div class="col-12 ">
+            <label for="sku">SKU</label>
+            <input type="text" id="sku" formControlName="sku" class="form-control">
+        </div>
+        <div class="col-12">
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name" class="form-control">
+        </div>
+        <div class="col-12">
+            <label for="shortName">Short Name</label>
+            <input type="text" id="shortName" formControlName="shortName" class="form-control">
+        </div>
+        <div class="col-12">
+            <label for="price">Price</label>
+            <input type="text" id="price" formControlName="price" class="form-control">
+        </div>
+        <div class="col-12">
+            <label for="categoryId">Category</label>
+            <select id="categoryId" formControlName="categoryId" class="form-select">
+                <option *ngFor="let cate of categoryList" [value]="cate.categoryId">{{ cate.categoryName }}
+                </option>
+            </select>
+        </div>
+        <div class="col-12">
+            <label for="deliveryTimeSpan">Delivery Time Span</label>
+            <input type="text" id="deliveryTimeSpan" formControlName="deliveryTimeSpan"
+                class="form-control">
+        </div>
+        <div class="col-12">
+            <label for="imageURL">Image URL</label>
+            <input type="text" id="imageURL" formControlName="imageURL" class="form-control">
+        </div>
+        <div class="col-12">
+            <label for="description">Description</label>
+            <input type="text" id="description" formControlName="description" class="form-control">
+        </div>
+        <div class="row py-2 mx-4">
+            <div class="col-6">
+                <button type="button" class="btn btn-success" >Reset</button>
+            </div>
+            <div class="col-6">
+                <button type="submit" (click)="onSave()" class="btn btn-success">Add
+                    Product</button>
+                <button type="submit" 
+                    class="btn btn-primary">Update Product</button>
+
+            </div>
+        </div>
+    </div>
+</form>
+<!-- <div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Input">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Textarea"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Select">
+        <mat-option value="option">Option</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div> -->

@@ -1,17 +1,26 @@
 body {
     background: #f4f4f4;
     color: purple;
+    
   }
-  
+  .logo{
+    width: 20%;
+  }
+  .logo img{
+    width:20%;
+    height:5vw;
+  }
   .navbar-section {
     background: #ffffff;
     color: #000000;
     font-size: 14px;
+    width:  40vw;
+    /* overflow-y: hidden; */
     font-weight: 500;
     color: #000;
   }
   .container-fluid {
-    width: 97%;
+    width: 95%;
   }
   
   .logo {
