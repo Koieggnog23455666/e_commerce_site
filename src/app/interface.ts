@@ -1,5 +1,5 @@
-export interface product{
-    productId: string,
+export interface productType{
+    productId: number,
     productSku: string,
     productName: string,
     productShortName: string,

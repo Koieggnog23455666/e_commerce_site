@@ -5,7 +5,7 @@
             <div class=".card-header bg-primary ">
                 <div class="row p-2 align-text-center ">
                     <div class="col-6 text-light">Product List</div>
-                    <div class="col-6 text-end "><button (click)="openDialog()"
+                    <div class="col-6 text-end "><button  (click)="openDialog()"
                             class="btn btn-sm btn-success ">Add New Products</button></div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                               <div class="card-body p-xs-1 p-lg-3">
                                 <h4 class="card-title">{{product.productName}} </h4>
                                 <p class="card-text">{{product.categoryName}} </p>
-                               <div class="col-12"> <a class="btn btn-primary mx-3 mx-sm-1" (click)="onEdit(product)">Edit</a>
+                               <div class="col-12"> <a class="btn btn-primary mx-3 mx-sm-1" (click)="updateDialog(product)">Edit</a>
                                 <a class="btn btn-danger" (click)="onDelete(product)">Delete</a></div>
                             </div>
                         </div>
@@ -93,7 +93,8 @@
                     </div>
                 </div>
             </form> -->
-<!-- <app-dialog-pop-up (productForm)="productForm"></app-dialog-pop-up> -->
+            <!-- <app-child (formSubmitted)="onFormSubmitted($event)"></app-child> -->
+<!-- <app-dialog-pop-up (formSubmitted)="onFormSubmitted($event)"></app-dialog-pop-up> -->
 <!-- <app-dialog-pop-up (categoryList)="categoryList"></app-dialog-pop-up>
 <app-dialog-pop-up (getAllProduct)="getAllProduct"></app-dialog-pop-up> -->
         </div>
