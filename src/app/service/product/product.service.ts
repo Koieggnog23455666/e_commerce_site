@@ -13,6 +13,9 @@ export class ProductService {
   getProduct(){
     return this.http.get(Constant.API_END_POINT+Constant.METHODS.GET_ALL_PRODUCT)
   }
+  getProductByCategoryId(id:number){
+    return this.http.get(Constant.API_END_POINT+Constant.METHODS.GET_ALL_PRODUCT_BY_CATEGORYID+id)
+  }
   saveProduct(obj:any){
     return this.http.post(Constant.API_END_POINT+Constant.METHODS.CREATE_PRODUCT,obj)
   }

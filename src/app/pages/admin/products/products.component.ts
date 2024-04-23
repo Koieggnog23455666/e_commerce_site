@@ -37,12 +37,12 @@ export class ProductsComponent implements OnInit {
     })
   }
   updateDialog(product: productType) {
-    
-
     this.dialogRef.open(DialogPopUpComponent, {
-      data:{basket:product,isUpdate:true},width:'700px',
-    });
-    this.getAllProduct()
+      data:{basket:product,updatedProduct:this.getAllProduct()},width:'700px',
+    }
+    
+  );
+  console.log("Before update",product)
   }
   
   getAllCategory() {
@@ -78,16 +78,5 @@ export class ProductsComponent implements OnInit {
   isCloseSidePanel() {
     this.isSidePanelVisible = false
   }
-  // onEdit(product:product) {
-    
-  //   this.isSidePanelVisible = true;
-
-  //   this.mode="Update";
-  //   console.log(product)
-  // }
   
-  // reset(){
-  //   this.productForm.reset()
-  //   this.mode="Add"
-  // }
 }

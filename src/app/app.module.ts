@@ -14,14 +14,15 @@ import { CustomerCartComponent } from './pages/website/customer-cart/customer-ca
 import { CustomerOrderComponent } from './pages/website/customer-order/customer-order.component';
 import { LandingComponent } from './pages/website/landing/landing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink,  RouterOutlet } from '@angular/router';
+import { ROUTES, RouterLink,  RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import {  HttpClientModule, provideHttpClient, } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogPopUpComponent } from './pages/admin/products/dialog-pop-up/dialog-pop-up.component'
 import {MatFormField} from '@angular/material/form-field'
-import {MatSelect,MatOption} from '@angular/material/select'
+import {MatSelect,MatOption} from '@angular/material/select';
+import { WebProductComponent } from './pages/website/web-product/web-product.component'
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {MatSelect,MatOption} from '@angular/material/select'
     CustomerCartComponent,
     CustomerOrderComponent,
     LandingComponent,
-    DialogPopUpComponent
+    DialogPopUpComponent,
+    WebProductComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,7 @@ import {MatSelect,MatOption} from '@angular/material/select'
     ReactiveFormsModule,
     RouterOutlet,
     RouterLink,MatDialogModule,
-    FontAwesomeModule,CommonModule,HttpClientModule,MatFormField,MatSelect,MatOption
+    FontAwesomeModule,CommonModule,HttpClientModule,MatFormField,MatSelect,MatOption,
   ],
   providers: [
    provideHttpClient(),provideClientHydration()

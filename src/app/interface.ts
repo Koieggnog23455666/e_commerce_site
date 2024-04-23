@@ -14,5 +14,6 @@ export interface productType{
 }
 export interface category{
     categoryName:string,
-    categoryId:number
+    categoryId:number,
+    parentCategoryId:number
 }

@@ -1,10 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { category, productType } from '../../../interface';
+import { ProductService } from '../../../service/product/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
 })
-export class LandingComponent {
+export class LandingComponent  {
+  categoryList:category[]=[]
+  isDropdownOpen = false;
+  constructor(private productSrv:ProductService,private routes:Router){this.getAllCategory()}
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  getAllCategory(){
+    this.productSrv.getCategory().subscribe((res:any)=>{
+      this.categoryList=res.data
+    })
+  }
+  navigateToProducts(id:number){
+    this.routes.navigate(['/products',id])
 
+  }
+ 
 }
