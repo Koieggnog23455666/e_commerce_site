@@ -1,9 +1,11 @@
-<div class="row g-3 mt-2 main ">
-    <div class="col-lg-6 col-xl-4 "  *ngFor="let product of loadProduct">
-        <div class="p-2 rounded bg-light " >
-            <div class="row align-items-center  ">
-                <div class="col-6">
-                    <img [src]="product.productImageUrl" class="img-fluid rounded-circle w-100" alt="">
+<div class="content">
+    <div class="heading"><span class="head">Best Seller</span><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel animi praesentium amet dicta odit, assumenda voluptates nam quasi. Ab numquam quas totam, odio beatae quaerat necessitatibus suscipit cupiditate doloribus delectus. Ducimus ipsam ut totam qui, dicta porro magni explicabo a rerum, iste distinctio ex ipsa.</span></div>
+         <div class="row g-3 mt-2 main  ">
+              <div class="col-lg-6 col-xl-4 product"  *ngFor="let product of loadProduct">
+                   <div class="p-2 rounded bg-light product1 " >
+                        <div class="row align-items-center  ">
+                            <div class="col-6">
+                                <img [src]="product.productImageUrl" class="img-fluid rounded-circle w-100" alt="">
                 </div>
                 <div class="col-5">
                     <a href="#" class="h5">{{product.productName}}</a>
@@ -21,3 +23,4 @@
             </div>
         </div>
     </div>
+</div>

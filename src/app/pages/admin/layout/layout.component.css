@@ -14,13 +14,16 @@ body {
     background: #ffffff;
     color: #000000;
     font-size: 14px;
-    width:  40vw;
+    width:  20vw !important;
     /* overflow-y: hidden; */
     font-weight: 500;
     color: #000;
   }
+  .location{
+    font-size: .8rem;
+  }
   .container-fluid {
-    width: 95%;
+    width: 90%;
   }
   
   .logo {

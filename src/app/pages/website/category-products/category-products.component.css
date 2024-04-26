@@ -1,0 +1,29 @@
+.main{
+    width:80% !important;
+    margin-top: 20% !important;
+}
+.content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product{
+    max-width: 40%;
+    /* height: 100%; */
+}
+.product1{
+    height: 100%;
+}
+.head{
+    font-size: 100px;
+    font-family: "Nunito", sans-serif;
+}
+.heading{
+    position: absolute;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}

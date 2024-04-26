@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../../../service/product/product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { category, productType } from '../../../interface';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPopUpComponent } from './dialog-pop-up/dialog-pop-up.component';
+import e from 'express';
+import {FormsModule} from '@angular/forms'
+import { Position } from 'popper.js';
 
 
 @Component({
@@ -19,22 +22,48 @@ export class ProductsComponent implements OnInit {
   name:string='krishna'
   productObj: productType[]=[]
   basket:any
-  constructor(private productSrv: ProductService,private dialogRef:MatDialog) { }
+  filteredProductList: productType[] = [];
+  searchText: string = '';
+  
+  constructor(private productSrv: ProductService,private dialogRef:MatDialog) { 
+    this.getAllProduct()
+    this.productSrv.searchQuery$.subscribe(query => {
+      this.searchText = query;
+      this.searchProducts();
+    });
+  }
+  searchProducts() {
+    if (!this.searchText.trim()) {
+      this.filteredProductList = this.productList;
+    }
+    else {
+      this.filteredProductList = this.productList.filter(product =>
+        product.productName.toLowerCase().includes(this.searchText.trim().toLowerCase())
+      );
+    }
+  }
+
   ngOnInit(): void {
     this.getAllCategory()
     this.getAllProduct()
-  }
+    
+    // this.productSrv.getProductNames().subscribe((products)=>{
+      //   this.searchProduct=products
+      // })
+    }
 
   openDialog(){
-    
+
   // this.mode=='Add'
     this.dialogRef.open(DialogPopUpComponent,{
       
       data:{basket:this.productList},
       
-      width:'700px'
+      width:'650px'
       
     })
+  this.getProductByName()
+  
   }
   updateDialog(product: productType) {
     this.dialogRef.open(DialogPopUpComponent, {
@@ -54,8 +83,19 @@ export class ProductsComponent implements OnInit {
   getAllProduct() {
     this.productSrv.getProduct().subscribe((res: any) => {
       this.productList = res.data
+      this.filteredProductList = this.productList;
+
+      // this.getProductByName()
+     
     })
   }
+  
+  getProductByName() {
+    let p2=this.productSrv.searchList
+    const searchResult=this.productList.filter((each)=>each.productName.toLowerCase().includes(p2))
+    this.productList=searchResult
+    console.log(this.productList)
+   }
  
   onDelete(item: any) {
     const isDelete = confirm("Are you sure to delete this item");

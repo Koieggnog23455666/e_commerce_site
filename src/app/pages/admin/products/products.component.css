@@ -35,7 +35,9 @@ nav{
 }
 .top:hover{
     transform: scale(.95);
+
 }
+
 .row{
     overflow-y: hidden;
 }
@@ -56,6 +58,10 @@ nav{
     object-fit:cover;
 } 
 
+.card-img-top:hover{
+  border-top-left-radius: 3% ;
+  border-top-right-radius: 3% ;
+}
 .second{
     display: flex ;
 }

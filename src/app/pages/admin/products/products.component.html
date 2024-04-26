@@ -1,6 +1,11 @@
 <div class="product-container px-0 mx-0"> 
+<!--   
+  <form action="">
+    <input class="form-control" (change)="getProductByName($event)" #searchInput type="search"  placeholder="Search" aria-label="Search">
+    <button type='submit'  class="pl-1 bg-light"><a href="#"><i class="fas fa-search"></i></a></button>
+  </form>   -->
     <div class="row">
-    <div [ngClass]="isSidePanelVisible?'col-9 px-0':'col-12'">
+    <div [ngClass]="isSidePanelVisible?'col-9 px-0':'col-12 mad'">
         <div class="card " >
             <div class=".card-header bg-primary ">
                 <div class="row p-2 align-text-center ">
@@ -11,7 +16,7 @@
             </div>
             <div class="card-body pl-3 ">
                 <div class="row">
-                    <div class="col-12 my-2 ml-1 top" *ngFor="let product of productList">
+                    <div class="col-12 my-2 ml-1 top"  *ngFor="let product of filteredProductList">
                           <div class="card col-12  top2">
                               <div class="col-12 middle">
                                   <img class="card-img-top" [src]="product.productImageUrl"
@@ -26,6 +31,26 @@
                             </div>
                         </div>
                     </div>
+                    
+
+                </div>
+                <div class="row">
+                    <!-- <div class="col-12 my-2 ml-1 top"  *ngFor="let product of filteredProductList">
+                          <div class="card col-12  top2">
+                              <div class="col-12 middle">
+                                  <img class="card-img-top" [src]="product.productImageUrl"
+                                    alt="Card image">
+                                </div>
+
+                              <div class="card-body p-xs-1 p-lg-3">
+                                <h4 class="card-title">{{product.productName}} </h4>
+                                <p class="card-text">{{product.categoryName}} </p>
+                               <div class="col-12"> <a class="btn btn-primary mx-3 mx-sm-1" (click)="updateDialog(product)">Edit</a>
+                                <a class="btn btn-danger" (click)="onDelete(product)">Delete</a></div>
+                            </div>
+                        </div>
+                    </div> -->
+                
 
                 </div>
             </div>
@@ -41,62 +66,7 @@
                             class="btn btn-sm btn-success ">Close</button></div>
                 </div>
             </div>
-            <!-- <form [formGroup]="productForm">
-                <div class="row px-2">
-                    <div class="col-12 ">
-                        <label for="sku">SKU</label>
-                        <input type="text" id="sku" formControlName="sku" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" formControlName="name" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <label for="shortName">Short Name</label>
-                        <input type="text" id="shortName" formControlName="shortName" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <label for="price">Price</label>
-                        <input type="text" id="price" formControlName="price" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <label for="categoryId">Category</label>
-                        <select id="categoryId" formControlName="categoryId" class="form-select">
-                            <option *ngFor="let cate of categoryList" [value]="cate.categoryId">{{ cate.categoryName }}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <label for="deliveryTimeSpan">Delivery Time Span</label>
-                        <input type="text" id="deliveryTimeSpan" formControlName="deliveryTimeSpan"
-                            class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <label for="imageURL">Image URL</label>
-                        <input type="text" id="imageURL" formControlName="imageURL" class="form-control">
-                    </div>
-                    <div class="col-12">
-                        <label for="description">Description</label>
-                        <input type="text" id="description" formControlName="description" class="form-control">
-                    </div>
-                    <div class="row py-2 mx-4">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-success" (click)="reset()">Reset</button>
-                        </div>
-                        <div class="col-6">
-                            <button type="submit" *ngIf="mode === 'Add'" (click)="onSave()" class="btn btn-success">Add
-                                Product</button>
-                            <button type="submit" *ngIf="mode === 'Update'" (click)="updateProduct()"
-                                class="btn btn-primary">Update Product</button>
-
-                        </div>
-                    </div>
-                </div>
-            </form> -->
-            <!-- <app-child (formSubmitted)="onFormSubmitted($event)"></app-child> -->
-<!-- <app-dialog-pop-up (formSubmitted)="onFormSubmitted($event)"></app-dialog-pop-up> -->
-<!-- <app-dialog-pop-up (categoryList)="categoryList"></app-dialog-pop-up>
-<app-dialog-pop-up (getAllProduct)="getAllProduct"></app-dialog-pop-up> -->
+      
         </div>
     </div>
 </div>

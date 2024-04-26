@@ -11,5 +11,9 @@ import { DialogPopUpComponent } from './pages/admin/products/dialog-pop-up/dialo
 })
 export class AppComponent {
   title = 'e_commerce_site';
- 
+  receivedSearchProduct: any[]=[];
+
+  receiveSearchProduct(searchProduct: any[]) {
+    this.receivedSearchProduct = searchProduct;
+  }
 }

@@ -1,6 +1,6 @@
 import { Component,EventEmitter,Inject,Input,InputDecorator,OnInit,Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProductsComponent } from '../products.component';
 import { ProductService } from '../../../../service/product/product.service';
 import { productType } from '../../../../interface';
@@ -15,7 +15,7 @@ interface category{
   styleUrl: './dialog-pop-up.component.css'
 })
 export class DialogPopUpComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private productSrv: ProductService){
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private productSrv: ProductService,public dialogRef: MatDialogRef<DialogPopUpComponent>){
     this.productObj=this.data
     const getProduct = {
      productId: this.productForm.get('productId')?.setValue(data.basket.productId),
@@ -94,6 +94,7 @@ onSave() {
     }
     
   })
+  this.dialogRef.close();
 }
 
 getAllCategory() {
@@ -131,5 +132,6 @@ console.log("After update",updatedProduct)
     }
   })
   this.data.updatedProduct
+  this.dialogRef.close();
 }
 }

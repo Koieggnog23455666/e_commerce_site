@@ -8,7 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="col-8 my-lg-2">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto narlink">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -29,6 +29,49 @@
     
                 </ul>
             </div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown3" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-cart-shopping fs-5 me-1" style="color: #ecf3f3;"></i>
+                </a>
+                <ul class="dropdown-menu second menuOnLeft rounded-0 mt-2" aria-labelledby="navbarDropdown3">
+                    <li class="p-2" *ngFor="let cart of cartList">
+                        <div class="d-flex w-100 border-bottom justify-content-evenly">
+                            <div>
+                                <img style="height: 100px !important;width: 100px !important;"
+                                    class="img-fluid     p-2" [src]="cart.productImageUrl" alt="">
+                            </div>
+
+
+                            <div >
+                                <a href="#" class="text-decoration-none text-black fw-semibold">
+                                    <p class="m-0 p-0">{{cart.productName}}</p>
+                                </a>
+                                <p>1 <i class="fa-solid fa-xmark" style="color: #0d0d0d;"></i> {{cart.productPrice}}Rup.</p>
+                            </div>
+                            <button type="button"  class="btn fs-5 closeBtn"><i
+                                    class="fa-solid fa-xmark"></i></button>
+                        </div>
+
+                    </li>
+                    
+                    <li class="p-2">
+                        <div class=" w-100 ">
+                            <div class="d-flex justify-content-between">
+                                <h6>SubTotal :</h6>
+                                <h6>159.00 Rup.</h6>
+                            </div>
+                            <div class="d-flex justify-content-evenly mt-2">
+                                <button class="btn btn-dark rounded-0 px-3"> View Cart</button>
+                                <a href="checkout.html"> <button
+                                        class="btn btn-danger rounded-0 px-3">Checkout</button></a>
+                            </div>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </li>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->

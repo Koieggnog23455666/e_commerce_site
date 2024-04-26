@@ -23,6 +23,9 @@ import { DialogPopUpComponent } from './pages/admin/products/dialog-pop-up/dialo
 import {MatFormField} from '@angular/material/form-field'
 import {MatSelect,MatOption} from '@angular/material/select';
 import { WebProductComponent } from './pages/website/web-product/web-product.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignUpComponent } from './pages/admin/sign-up/sign-up.component';
+
 
 @NgModule({
   declarations: [
@@ -39,16 +42,18 @@ import { WebProductComponent } from './pages/website/web-product/web-product.com
     CustomerOrderComponent,
     LandingComponent,
     DialogPopUpComponent,
-    WebProductComponent
+    WebProductComponent,
+    SignUpComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     RouterOutlet,
     RouterLink,MatDialogModule,
     FontAwesomeModule,CommonModule,HttpClientModule,MatFormField,MatSelect,MatOption,
+    
   ],
   providers: [
    provideHttpClient(),provideClientHydration()

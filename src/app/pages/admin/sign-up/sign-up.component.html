@@ -1,0 +1,38 @@
+
+<div class="main">
+    <div class="card" >
+        <h2>Sign Up</h2>
+
+        <div class="login_register">
+            <h3>Hello NewBie</h3>
+    
+        </div>
+        <!-- [(ngModel)]="member.userName" placeholder="Email Adress" -->
+        <!-- [(ngModel)]="member.password" -->
+        <form class="form" [formGroup]="signUp">
+            <input type="text" placeholder="UserName" formControlName="username" [(ngModel)]="member.userName" id="userName" class="username">
+            <span *ngIf="signUp.get('username')?.invalid && signUp.get('username')?.touched">
+            <span *ngIf="signUp.get('username')?.errors?.['required']">Please enter a Username</span></span>
+            <input type="email" id="email" placeholder="Email" formControlName="email"  [(ngModel)]="member.email" placeholder="Email Adress" class="email">
+            <span *ngIf="signUp.get('email')?.invalid && signUp.get('email')?.touched">
+                <span *ngIf="signUp.get('email')?.errors?.['required']">Please enter a Email</span>
+                <span *ngIf="signUp.get('email')?.errors?.['pattern']">Please enter a correct email</span>
+            </span>
+            <input type="password" id="password" formControlName="password" [(ngModel)]="member.password"  placeholder="password" class="pass">
+            <span *ngIf="signUp.get('password')?.invalid && signUp.get('password')?.touched">
+                <span *ngIf="signUp.get('password')?.errors?.['required']">Please enter a Password</span>
+                <span *ngIf="signUp.get('password')?.errors?.['minlength']">Please enter a minimum 6 charater</span>
+            </span>
+        </form>
+
+        <!-- <a href="#" class="fp">Forgot password?</a> -->
+
+        <button type="button" (click)="onSignUp()"  class="login_btn">Sign Up</button>
+
+        <div class="footer_card">
+            <p>Already a Member?</p>
+            <a href="#" routerLink="/login">Login</a>
+        </div>
+    </div>
+
+</div>

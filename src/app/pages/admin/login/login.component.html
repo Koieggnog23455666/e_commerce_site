@@ -1,35 +1,31 @@
-
 <div class="main">
-    <div class="card">
+    <div class="card" [ngClass]="{'signup-open': isSignupOpen}">
         <h2>Login Form</h2>
 
-            <!-- SE CONNECTER / S'INSCRIRE -->
         <div class="login_register">
-            <a class="login">Login</a>
-            <a  class="register" target="blank">Signup</a>
+            
+            <h3>Welcome Back</h3>
         </div>
 
-            <!-- FORMULAIRE -->
-        <form class="form">
-            <input type="email" name="userName" [(ngModel)]="member.userName"  placeholder="Email Adress" class="email">
+        <form class="form" [formGroup]="login">
+            <span *ngIf="login.get('email')?.invalid && login.get('email')?.touched">
+                <span *ngIf="login.get('email')?.errors?.['required']">Please enter a email</span>
+            </span>
+            <input type="email" name="userName" [(ngModel)]="member.userName" placeholder="Email Adress" class="email">
+            
             <input type="password" name="password" [(ngModel)]="member.password" placeholder="password" class="pass">
+            <span *ngIf="login.get('password')?.invalid && login.get('password')?.touched">
+                <span *ngIf="login.get('password')?.errors?.['required']">Please enter a Password</span>
+                
+            </span>
         </form>
-
-            <!-- MOT DE PASSE OUBLIE ? -->
         <a href="#" class="fp">Forgot password?</a>
 
-            <!-- BOUTTON LOGIN -->
-            <button type="button" routerLink="products" (click)="onLogin()" class="login_btn">Login</button>
+        <button type="button" routerLink="products" (click)="onLogin()" class="login_btn">Login</button>
 
-            <!-- PIED DE LA CARD -->
         <div class="footer_card">
-        <p>Not a member?</p>
-        <a href="#">Signup now</a>
+            <p>Not a member?</p>
+            <a href="#" routerLink="/sign-up" >Signup now</a>
         </div>
     </div>
-</div>
-
-
-   
-        
-
+<router-outlet></router-outlet>
